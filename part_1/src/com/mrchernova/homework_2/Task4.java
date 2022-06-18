@@ -12,7 +12,7 @@ public class Task4 {
         int a = 0;
 
         if (n >= 1000 && n <= 9999) {
-            System.out.println("Вы ввыли число " + n);
+            System.out.println("Вы ввели число " + n);
             for (int i = 0; i < 4; i++) {
                 x = n % 10;
                 a = a * 10 + x;
