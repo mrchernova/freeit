@@ -1,9 +1,9 @@
-package com.chernova.homework2;
+package com.chernova.homework_2;
 /**
  * Написать программу, результатом работы которой будет вывод результата сравнения двух введенных чисел
  */
 
-public class JavaComparison {
+public class Task1_JavaComparison {
     public static void main(String[] args) {
         int a = 4;
         int b = 4;
