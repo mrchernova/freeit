@@ -25,9 +25,9 @@ public class Task3 {
 
         int w = (d - days) / 7;
 
-        System.out.println(                                                           m + " min  " + sec + " sec");
-        System.out.println(                                        h + " hours  " + min + " min  " + sec + " sec");
-        System.out.println(                    d + " days  " + hours + " hours  " + min + " min  " + sec + " sec");
+        System.out.println(m + " min  " + sec + " sec");
+        System.out.println(h + " hours  " + min + " min  " + sec + " sec");
+        System.out.println(d + " days  " + hours + " hours  " + min + " min  " + sec + " sec");
         System.out.println(w + " weeks  " + days + " days  " + hours + " hours  " + min + " min  " + sec + " sec");
     }
 }
