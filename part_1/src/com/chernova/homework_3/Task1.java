@@ -13,29 +13,27 @@ public class Task1 {
         String name = "";
         String sex;
 
-
-        Scanner scAge = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.println("Введите свой возраст: ");
-        while (!scAge.hasNextInt()) {
+        while (!sc.hasNextInt()) {
             System.out.println("Корректно введите свой возраст ");
-            scAge.next();
+            sc.next();
         }
-        age = scAge.nextInt();
+        age = sc.nextInt();
         while (age < 0) {
             System.out.println("Корректно введите данные ");
-            age = scAge.nextInt();
+            age = sc.nextInt();
         }
 
 
-        Scanner scName = new Scanner(System.in);
         System.out.println("Введите свое имя: ");
-        name = scName.nextLine();
+        sc.nextLine(); // без этого не читает строку после sc.nextInt
+        name = sc.nextLine();
 
 
-        Scanner scSex = new Scanner(System.in);
         System.out.println("Укажите свой пол (м или ж)(m or f) ");
         do {
-            sex = scSex.nextLine();
+            sex = sc.nextLine();
         } while (!sex.equals("м") && !sex.equals("ж") && !sex.equals("m") && !sex.equals("f"));
 
 
