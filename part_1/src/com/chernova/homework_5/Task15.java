@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class Task15 {
     public static void main(String[] args) {
-        int[] array = new int[10];
+        int[] array = new int[11];
         Random random = new Random();
 
 
@@ -21,8 +21,16 @@ public class Task15 {
         }
         System.out.println();
 
-        System.out.println("Перевернутый массив:");
-        for (int i = array.length-1; i >= 0; i--) {
+        // переворачиваем массив
+        int tmp;
+        for (int i = 0; i < array.length/ 2; i++) {
+            tmp = array[i];
+            array[i] = array[array.length - i - 1];
+            array[array.length - i - 1] = tmp;
+        }
+
+        // распечатываем перевернутый массив
+        for (int i = 0; i < array.length; i++) {
             System.out.print(array[i] + " ");
         }
 
