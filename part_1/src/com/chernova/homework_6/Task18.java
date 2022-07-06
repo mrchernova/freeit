@@ -16,6 +16,9 @@ public class Task18 {
         int mn = 0;
         char c;
 
+        System.out.println("Дана строко:");
+        System.out.println(s);
+
         // ищем многоточие
         Pattern p = Pattern.compile("[.]{3}");
         Matcher m = p.matcher(s);
@@ -28,7 +31,7 @@ public class Task18 {
                 n++;
             }
         }
-        System.out.println(n - mn);
+        System.out.println("Знаков препинания в строке = " + (n - mn));
 
     }
 }
