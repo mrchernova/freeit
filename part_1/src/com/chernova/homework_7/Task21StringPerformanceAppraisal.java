@@ -1,9 +1,9 @@
 package com.chernova.homework_7;
 /*
- Напишите три цикла выполняющих многократное сложение строк.
- - с помощью оператора сложения и String
- - с помощью append и StringBuilder
- - с помощью append и StringBuffer
+ * Напишите три цикла выполняющих многократное сложение строк.
+ * - с помощью оператора сложения и String
+ * - с помощью append и StringBuilder
+ * - с помощью append и StringBuffer
  */
 
 public class Task21StringPerformanceAppraisal {
