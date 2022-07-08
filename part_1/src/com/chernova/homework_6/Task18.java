@@ -13,25 +13,17 @@ public class Task18 {
 
         String s = "Найти в строке не только запятые, но и другие знаки препинания... Подсчитать общее их количество.";
         int n = 0;
-        int mn = 0;
-        char c;
 
-        System.out.println("Дана строко:");
+        System.out.println("Дана строка:");
         System.out.println(s);
 
-        // ищем многоточие
-        Pattern p = Pattern.compile("[.]{3}");
-        Matcher m = p.matcher(s);
-        while (m.find()) mn = mn + 2;
+        Pattern p2 = Pattern.compile("([.]{3})|(\\p{Punct})");
+        Matcher m2 = p2.matcher(s);
 
-        // ищем остальные знаки препинания
-        for (int i = 0; i < s.length(); i++) {
-            c = s.charAt(i);
-            if (c == '.' || c == ',' || c == ':' || c == ';' || c == '-' || c == '(' || c == ')' || c == '!' || c == '?' || c == '\"') {
-                n++;
-            }
+        while (m2.find()) {
+            n++;
         }
-        System.out.println("Знаков препинания в строке = " + (n - mn));
 
+        System.out.println("Знаков препинания в строке = " + n);
     }
 }
