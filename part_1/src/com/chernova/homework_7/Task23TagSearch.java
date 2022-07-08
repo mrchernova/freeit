@@ -13,11 +13,10 @@ import java.util.regex.Pattern;
 public class Task23TagSearch {
     public static void main(String[] args) {
         StringBuffer s = new StringBuffer("<div>Дан текст: \n" +
-                "<p>Aбзац 1</p> \n" +
-                "<p id=\"p1\">Aбзац 2</p> \n" +
-                "<p align=\"justify\">Абзац 3</p> \n" +
+                "<p>Aбзац 1. Какой-то там текст.</p> \n" +
+                "<p id=\"p1\">Aбзац 2. Еще текст пусть будет.</p> \n" +
+                "<p align=\"justify\">Абзац 3. Для примера еще строчка.</p> \n" +
                 "</div>");
-
 
         System.out.println(s);
 
@@ -25,19 +24,12 @@ public class Task23TagSearch {
         Matcher m = p.matcher(s);
 
         while (m.find()) {
-            System.out.println();
-            System.out.println("---------- "+m.group());
-
             if (!m.group().equals("<p>")) {
-
-                s.replace(m.start(),m.end(),"<p>");
-
-                System.out.println();
-                System.out.println(s);
+                s.replace(m.start(), m.end(), "<p>");
+                m.reset(s);
             }
-
         }
-
+        System.out.println("\n" + s);
 
     }
 }
