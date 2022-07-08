@@ -1,5 +1,6 @@
 package com.chernova.homework_5;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -10,14 +11,13 @@ public class XO {
     public static Scanner sc = new Scanner(System.in);
     public static String sx = "x";
     public static String so = "o";
-    public static String[][] field = new String[3][3];
+    public static String[][] field = {{"-", "-", "-"}, {"-", "-", "-"}, {"-", "-", "-"}};
 
     public static void main(String[] args) {
 
         int[][] exampleField = new int[3][3];
         printExample(exampleField);
         System.out.println("Start the game by selecting a cell 1..9");
-        initEmptyField(field);
 
         while (count < 9) {
             n = sc.nextInt();
@@ -81,39 +81,39 @@ public class XO {
     public static void Step(int n, String[][] field, String xo) {
         switch (n) {
             case 1:
-                if (field[0][0] == "-") field[0][0] = xo;
+                if (field[0][0].equals("-")) field[0][0] = xo;
                 else checkStep(xo);
                 break;
             case 2:
-                if (field[0][1] == "-") field[0][1] = xo;
+                if (field[0][1].equals("-")) field[0][1] = xo;
                 else checkStep(xo);
                 break;
             case 3:
-                if (field[0][2] == "-") field[0][2] = xo;
+                if (field[0][2].equals("-")) field[0][2] = xo;
                 else checkStep(xo);
                 break;
             case 4:
-                if (field[1][0] == "-") field[1][0] = xo;
+                if (field[1][0].equals("-")) field[1][0] = xo;
                 else checkStep(xo);
                 break;
             case 5:
-                if (field[1][1] == "-") field[1][1] = xo;
+                if (field[1][1].equals("-")) field[1][1] = xo;
                 else checkStep(xo);
                 break;
             case 6:
-                if (field[1][2] == "-") field[1][2] = xo;
+                if (field[1][2].equals("-")) field[1][2] = xo;
                 else checkStep(xo);
                 break;
             case 7:
-                if (field[2][0] == "-") field[2][0] = xo;
+                if (field[2][0].equals("-")) field[2][0] = xo;
                 else checkStep(xo);
                 break;
             case 8:
-                if (field[2][1] == "-") field[2][1] = xo;
+                if (field[2][1].equals("-")) field[2][1] = xo;
                 else checkStep(xo);
                 break;
             case 9:
-                if (field[2][2] == "-") field[2][2] = xo;
+                if (field[2][2].equals("-")) field[2][2] = xo;
                 else checkStep(xo);
                 break;
         }
@@ -152,13 +152,5 @@ public class XO {
             System.out.println();
         }
         System.out.println("|-----------|");
-    }
-
-    public static void initEmptyField(String[][] field) {
-        for (int i = 0; i < field.length; i++) {
-            for (int j = 0; j < field[i].length; j++) {
-                field[i][j] = "-";
-            }
-        }
     }
 }
