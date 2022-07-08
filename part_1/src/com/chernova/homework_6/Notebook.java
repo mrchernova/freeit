@@ -28,11 +28,11 @@ public class Notebook {
             item = sc.nextByte();
         }
 
-        Vocabulary(note, --item);
+        vocabulary(note, --item);
     }
 
 
-    public static void Vocabulary(String[] note, int x) {
+    public static void vocabulary(String[] note, int x) {
 
         System.out.println("Вы выбрали запись - " + note[x].trim());
 
@@ -55,7 +55,9 @@ public class Notebook {
 
             // проверка очередного слова с теми, что уже есть в словаре
             for (int v = 0; v < vocabulary.length; v++) {
-                if (words[i].equals(vocabulary[v])) consist = true;
+                if (words[i].equals(vocabulary[v])) {
+                    consist = true;
+                }
             }
 
             // если в словаре еще нет таких слов, то можно заносить
