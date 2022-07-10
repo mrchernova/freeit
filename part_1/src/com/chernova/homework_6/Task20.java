@@ -19,7 +19,7 @@ public class Task20 {
 
     // удаляет лишние символы и пробелы
     public static String trimString(String s) {
-        s = s.replaceAll("[~@#$%^&*()_+=,\"»«:;.?!0123456789]", "");
+        s = s.replaceAll("[\\p{Punct}0-9]", "");
         s = s.trim();
         char[] c = s.toCharArray();
 
