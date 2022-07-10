@@ -1,30 +1,27 @@
 package com.chernova.homework_6;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
- * Имеетсястрока с текстом. Подсчитать количество слов в тексте.
+ * Имеется строка с текстом. Подсчитать количество слов в тексте.
  * Слова могут разделяться несколькими пробелами.
  * В начале и конце текста тоже могут быть пробелы.
  */
 
 public class Task19 {
     public static void main(String[] args) {
-        String s = "  Дана строка    с    несколькими пробелами между   словами     ";
+        String s = "  Дана строка    с    несколькими пробелами между   словами.    Сколько слов в строке? ";
         System.out.println(s);
+        int n = 0;
 
-        s = s.trim();
-        char[] c = s.toCharArray();
+        Pattern p = Pattern.compile("[\\p{IsWord}]+");
+        Matcher m = p.matcher(s);
 
-        s = "";
-        for (int i = 0; i < c.length; i++) {
-            s += c[i];
-
-            while ((c[i] == ' ') && (c[i + 1] == ' ')) {
-                i++;
-            }
+        while (m.find()) {
+            n++;
         }
-
-        System.out.println("Количество слов в строке: " + s.split(" ").length);
-
+        System.out.println("Количество слов в строке: " + n);
     }
 }
 
