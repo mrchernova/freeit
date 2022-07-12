@@ -6,60 +6,68 @@ package com.chernova.homework_7;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class NotebookSortByDate {
     public static void main(String[] args) {
-        ArrayList<Notebook> notes = new ArrayList<Notebook>();
+
+        ArrayList<Note> notes = new ArrayList<Note>();
+
         Scanner sc = new Scanner(System.in);
         Random rand = new Random();
         String s = "";
-        System.out.println("Запишите задачу или нажмите \".\", если хотите перейти к списку");
 
-        s = sc.nextLine();
-        while (!s.equals(".")) {
-            notes.add(new Notebook(s, new Date(122, rand.nextInt(13) + 1, rand.nextInt(32) + 1)));
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+
+        System.out.println("Напишите задачу или нажмите \".\", если хотите перейти к списку");
+
+
+        do {
             s = sc.nextLine();
-        }
-
-        // дополнительные задачи для примера
-        notes.add(new Notebook("Покормить кота", new Date(122, rand.nextInt(13) + 1, rand.nextInt(32) + 1)));
-        notes.add(new Notebook("Вынести мусор", new Date(122, rand.nextInt(13) + 1, rand.nextInt(32) + 1)));
+            Pattern p = Pattern.compile("[\\s]+|[\\p{Punct}]+");
+            Matcher m = p.matcher(s);
+            if (!m.matches()) {
+                notes.add(new Note(s.trim(), new Date(122, rand.nextInt(13) + 1, rand.nextInt(32) + 1)));
+            }
+        } while (!s.equals("."));
 
 
         System.out.println("список задач до сортировки:");
-        for (Notebook i : notes) {
+        for (Note i : notes) {
             System.out.println(i);
         }
 
-        Collections.sort(notes);
+
+        // алгоритм сортировки вставками
+        ArrayList<Note> tmp = new ArrayList<Note>();
+        for (int i = 1; i < notes.size(); i++) {
+            tmp.add(0, notes.get(i));
+            int j = i;
+            while (j > 0 && notes.get(j - 1).date.after(tmp.get(0).date)) {
+                notes.set(j, notes.get(j - 1));
+                j--;
+            }
+            notes.set(j, tmp.get(0));
+        }
+
+
 
         System.out.println("\nсписок задач после сортировки:");
-        for (Notebook i : notes) {
+        for (Note i : notes) {
             System.out.println(i);
         }
 
     }
 
 
-    public static class Notebook implements Comparable<Notebook> {
+    public static class Note {
         private String note;
         private Date date;
 
-        public Notebook(String note, Date date) {
+        public Note(String note, Date date) {
             this.note = note;
             this.date = date;
-        }
-
-
-        // Сортировка сначала по дате, а потом по алфавиту
-        @Override
-        public int compareTo(Notebook o) {
-
-            int result = this.date.compareTo(o.date);
-            if (result == 0) {
-                result = this.note.compareTo(o.note);
-            }
-            return result;
         }
 
 
