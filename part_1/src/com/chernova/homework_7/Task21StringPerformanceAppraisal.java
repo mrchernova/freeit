@@ -15,21 +15,27 @@ public class Task21StringPerformanceAppraisal {
         Long ld1,ld2;
 
         ld1 = System.currentTimeMillis();
-        for (int i = 0; i < 100000 ; i++) s = s + i;
+        for (int i = 0; i < 100000 ; i++) {
+            s = s + i;
+        }
         ld2 = System.currentTimeMillis();
         System.out.println("Скорость сложения строк с помощью + и String");
         System.out.println(ld2 + " - " + ld1 + " = " + (ld2-ld1) + " мс.");
 
 
         ld1 = System.currentTimeMillis();
-        for (int i = 0; i < 100000 ; i++) sbl.append(i);
+        for (int i = 0; i < 100000 ; i++) {
+            sbl.append(i);
+        }
         ld2 = System.currentTimeMillis();
         System.out.println("Скорость сложения строк с помощью append и StringBuilder");
         System.out.println(ld2 + " - " + ld1 + " = " + (ld2-ld1) + " мс.");
 
 
         ld1 = System.currentTimeMillis();
-        for (int i = 0; i < 100000 ; i++) sbf.append(i);
+        for (int i = 0; i < 100000 ; i++) {
+            sbf.append(i);
+        }
         ld2 = System.currentTimeMillis();
         System.out.println("Скорость сложения строк с помощью append и StringBuffer");
         System.out.println(ld2 + " - " + ld1 + " = " + (ld2-ld1) + " мс.");
