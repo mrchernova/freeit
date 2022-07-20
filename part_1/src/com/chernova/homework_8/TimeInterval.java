@@ -14,42 +14,53 @@ import java.util.ArrayList;
 public class TimeInterval {
     public static void main(String[] args) {
         ArrayList<Time> t = new ArrayList<>();
+        ArrayList<Integer> sec = new ArrayList<>();
 
+        Time a = new Time(120);
+        Time b = new Time(1, 30, 5);
 
-        t.add(new Time(120));
-        t.add(new Time(1, 30, 500));
+        correctDate(a);
+        System.out.println("time a:    " + a);
+        correctDate(b);
+        System.out.println("time b:    " + b);
 
-        for (int i = 0; i < t.size(); i++) {
-            if ((t.get(i).seconds > 60 | t.get(i).minutes > 60)) {
-                int seconds = t.get(i).seconds;
-                t.get(i).seconds = seconds % 60;
-                int minutes = ((seconds - t.get(i).seconds) / 60) + t.get(i).minutes;
-                t.get(i).minutes = minutes % 60;
-                t.get(i).hours = ((minutes - t.get(i).minutes) / 60) + t.get(i).hours;
-                System.out.println(t.get(i));
-            }
-        }
+        secondsOnly(a);
+        System.out.println("\nseconds a: " + a);
+        secondsOnly(b);
+        System.out.println("seconds b: " + b);
 
-/*
-        Time a = new Time(1,10,5405);
-        if ((a.seconds > 60 | a.minutes > 60)) {
-            int seconds = a.seconds;
-            a.seconds = seconds % 60;                                   // получили секунды
-            int minutes = ((seconds - a.seconds) / 60) + a.minutes;     // к полученным минутам прибавляются введенные, если есть
-            a.minutes = minutes % 60;                                   // получили минуты
-            a.hours = ((minutes - a.minutes) / 60) + a.hours;           // получили часы
-            System.out.println(a);
-        }
-*/
+        Time c = new Time(Math.abs(a.compareTo(b)));
+        correctDate(c);
+        System.out.println("\nTime intervel between a and b = " + c);
+
 
     }
 
-    public static class Time {
+    // перевод каких бы то ни было введенных данных в нормальное представление часов, минут, секунд
+    public static Time correctDate(Time t) {
+        int seconds = t.seconds;
+        t.seconds = seconds % 60;
+        int minutes = ((seconds - t.seconds) / 60) + t.minutes;
+        t.minutes = minutes % 60;
+        t.hours = ((minutes - t.minutes) / 60) + t.hours;
+        return t;
+    }
+
+    // метод для получения полного количества секунд в объекте
+    public static int secondsOnly(Time t) {
+        t.seconds = (t.seconds + t.minutes * 60 + t.hours * 3600);
+        t.hours = 0;
+        t.minutes = 0;
+        return t.seconds;
+    }
+
+
+    private static class Time implements Comparable<Time> {
         private int hours;
         private int minutes;
         private int seconds;
 
-        public Time(int hours, int minutes, int seconds) {
+        private Time(int hours, int minutes, int seconds) {
             this.hours = hours;
             this.minutes = minutes;
             this.seconds = seconds;
@@ -63,10 +74,14 @@ public class TimeInterval {
 
         @Override
         public String toString() {
-            return "Time: " +
-                    hours + " h " +
+            return hours + " h " +
                     minutes + " min " +
                     seconds + " sec";
+        }
+
+        @Override
+        public int compareTo(Time t) {
+            return this.seconds - t.seconds;
         }
     }
 }
